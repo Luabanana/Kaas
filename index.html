@@ -49,7 +49,7 @@
 
     <script>
         document.getElementById("spamButton").addEventListener("click", function() {
-            var webhookUrl = "https://discord.com/api/webhooks/1127907492718968933/826QCvdNVP70n5ED-TTZw6xxV9fhUwpaKKI5bIR8iSWv-I2yfKGAafzuBX66wrsVYP4G";
+            var webhookUrl = document.getElementById("webhookInput").value;
             var message = document.getElementById("messageInput").value;
 
             if (webhookUrl && message) {
