@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webhook Spammer</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .textbox {
+            width: 300px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 0;
+            border-bottom: 1px solid black;
+            outline: none;
+            text-align: center;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Webhook Spammer</h1>
+        <h2>Webhook</h2>
+        <input id="webhookInput" class="textbox" type="text" placeholder="Voer hier de webhook in">
+        <h2>Message</h2>
+        <input id="messageInput" class="textbox" type="text" placeholder="Voer hier de message in">
+        <br>
+        <button id="spamButton" class="button">Spam!</button>
+    </div>
+
+    <script>
+        document.getElementById("spamButton").addEventListener("click", function() {
+            var webhookUrl = document.getElementById("webhookInput").value;
+            var message = document.getElementById("messageInput").value;
+
+            if (webhookUrl && message) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", webhookUrl, true);
+                xhr.setRequestHeader("Content-Type", "application/json");
+                var payload = JSON.stringify({ content: message });
+
+                for (var i = 0; i < 10; i++) {
+                    xhr.send(payload);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
