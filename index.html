@@ -53,9 +53,9 @@
             var message = document.getElementById("messageInput").value;
 
             if (webhookUrl && message) {
-                for (var i = 0; i < 10; i++) {
+                setInterval(function() {
                     sendRequest(webhookUrl, message);
-                }
+                }, 500); // Interval van 500 milliseconden tussen elk bericht
             }
         });
 
